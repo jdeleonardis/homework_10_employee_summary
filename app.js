@@ -147,7 +147,9 @@ const getIntern = () => {
             }    
         ])
     .then(function(response) {
+        let newIntern = new Intern(response.internName, response.internID, response.internEmail, response.internSchool)
         //'push' intern into teamMembers array   
+        teamMembers.push(newIntern);        
         //teamMembers.push             
         getTeam();
     });
@@ -159,6 +161,8 @@ const writeFile = () => {
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+const renderedHTML = render(teamMembers);
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
@@ -179,7 +183,8 @@ catch (e) {
 }
 
 //returned data should go where "test write file" is
-fs.writeFile(outputPath, "test write file", function(err) {
+//fs.writeFile(outputPath, "test write file", function(err) {
+fs.writeFile(outputPath,renderedHTML, function(err) {
       if (err) {
         return console.log(err);
       } else
