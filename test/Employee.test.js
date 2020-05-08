@@ -46,3 +46,14 @@ test("getRole() should return \"Employee\"", () => {
   const e = new Employee("Alice", 1, "test@test.com");
   expect(e.getRole()).toBe(testValue);
 });
+
+describe("Employee", () => {
+    describe("Initialization", () => {
+      it("should create an object with name, id, email, github when provided with arguments", () => {
+        const employee = new Employee("Mike Johnson", 123, "mjohnson@hotmail.com");
+        expect(employee.name).toEqual("Mike Johnson");
+        expect(employee.id).toEqual(123);
+        expect(employee.email).toEqual("mjohnson@hotmail.com");  
+      });  
+    });
+  });

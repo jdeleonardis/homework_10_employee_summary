@@ -17,3 +17,15 @@ test("Can get school via getSchool()", () => {
   const e = new Intern("Foo", 1, "test@test.com", testValue);
   expect(e.getSchool()).toBe(testValue);
 });
+
+describe("Intern", () => {
+    describe("Initialization", () => {
+      it("should create an object with name, id, email, school when provided with arguments", () => {
+        const intern = new Intern("Mike Johnson", 123, "mjohnson@hotmail.com","USCL");
+        expect(intern.name).toEqual("Mike Johnson");
+        expect(intern.id).toEqual(123);
+        expect(intern.email).toEqual("mjohnson@hotmail.com");
+        expect(intern.school).toEqual("USCL");  
+      });  
+    });
+  });

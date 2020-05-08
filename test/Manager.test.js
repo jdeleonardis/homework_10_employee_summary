@@ -18,3 +18,15 @@ test("Can get office number via getOffice()", () => {
   const e = new Manager("Foo", 1, "test@test.com", testValue);
   expect(e.getOfficeNumber()).toBe(testValue);
 });
+
+describe("Manager", () => {
+    describe("Initialization", () => {
+      it("should create an object with name, id, email, office number when provided with arguments", () => {
+        const manager = new Manager("Mike Johnson", 123, "mjohnson@hotmail.com",1234);
+        expect(manager.name).toEqual("Mike Johnson");
+        expect(manager.id).toEqual(123);
+        expect(manager.email).toEqual("mjohnson@hotmail.com");
+        expect(manager.officeNumber).toEqual(1234);  
+      });  
+    });
+  });
