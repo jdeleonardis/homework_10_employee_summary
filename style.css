@@ -1,0 +1,23 @@
+.jumbotron {
+    background-color: #0b132b;
+    color: whitesmoke;
+}
+
+.managerheader {
+    background-color: #1c2541;
+    color: whitesmoke;
+}
+
+.engineerheader {
+    background-color: #3a506b;
+    color: whitesmoke;    
+}
+
+.internheader {
+    background-color: #5bc0be;
+    color: whitesmoke;    
+}
+
+.employee-card {
+    box-shadow: 10px 10px #888888;
+}

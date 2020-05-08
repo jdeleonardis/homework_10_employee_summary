@@ -61,8 +61,9 @@ const getManager = () => {
             }    
         ])
     .then(function(response) {
-        //'push' manager into teamMembers array
-        //teamMembers.push
+        let newManager = new Manager(response.managerName, response.managerID, response.managerEmail, response.officeNumber)
+        //'push' manager into teamMembers array   
+        teamMembers.push(newManager);
         getTeam();
     });
 }
@@ -116,8 +117,9 @@ const getEngineer = () => {
             }    
         ])
     .then(function(response) {
-        //'push' engineer into teamMembers array
-        //teamMembers.push        
+        let newEngineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGitHubID)
+        //'push' engineer into teamMembers array   
+        teamMembers.push(newEngineer);
         getTeam();
     });
 }
@@ -150,7 +152,6 @@ const getIntern = () => {
         let newIntern = new Intern(response.internName, response.internID, response.internEmail, response.internSchool)
         //'push' intern into teamMembers array   
         teamMembers.push(newIntern);        
-        //teamMembers.push             
         getTeam();
     });
 }
@@ -170,9 +171,6 @@ const renderedHTML = render(teamMembers);
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
-//only available in async function
-//await writeFileAsync(outputPath, returnedFile);
-//await writeFileAsync(outputPath, "test write data");
 
 //console.log(OUTPUT_DIR);
 try {
