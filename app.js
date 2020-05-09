@@ -87,7 +87,7 @@ const getTeam = () => {
               getIntern();
               break;
             default:
-              writeFile();
+              buildData();
           }
     });
 }
@@ -156,39 +156,53 @@ const getIntern = () => {
     });
 }
 
-const writeFile = () => {
-//ADD CODE HERE TO WRITE THE FILE OUT!!!
+const buildData = () => {
+    //ADD CODE HERE TO WRITE THE FILE OUT!!!
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
+    // After the user has input all employees desired, call the `render` function (required
+    // above) and pass in an array containing all employee objects; the `render` function will
+    // generate and return a block of HTML including templated divs for each employee!
 
-const renderedHTML = render(teamMembers);
+    const renderedHTML = render(teamMembers);
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
+    // After you have your html, you're now ready to create an HTML file using the HTML
+    // returned from the `render` function. Now write it to a file named `team.html` in the
+    // `output` folder. You can use the variable `outputPath` above target this location.
+    // Hint: you may need to check if the `output` folder exists and create it if it
+    // does not.
 
 
-//console.log(OUTPUT_DIR);
-try {
-    fs.accessSync(OUTPUT_DIR);
-} 
-catch (e) {
-    fs.mkdirSync(OUTPUT_DIR);
-}
+    //console.log(OUTPUT_DIR);
+    try {
+        fs.accessSync(OUTPUT_DIR);
+    } 
+    catch (e) {
+        fs.mkdirSync(OUTPUT_DIR);
+    }
 
-//returned data should go where "test write file" is
-//fs.writeFile(outputPath, "test write file", function(err) {
-fs.writeFile(outputPath,renderedHTML, function(err) {
-      if (err) {
-        return console.log(err);
-      } else
-        console.log("Success!");
-      });
+    //returned data should go where "test write file" is
+    //fs.writeFile(outputPath, "test write file", function(err) {
+
+    // fs.writeFile(outputPath,renderedHTML, function(err) {
+    //       if (err) {
+    //         return console.log(err);
+    //       } else
+    //         console.log("Success!");
+    //       });
+
+    fsWriteFile(renderedHTML);
 
 }
 
 getManager();
+
+//moved the file write to its own function so it can be tested with jest
+const fsWriteFile = (renderedHTML) => {
+    fs.writeFile(outputPath,renderedHTML, function(err) {
+          if (err) {
+            return console.log(err);
+          } else
+            console.log("Success!");
+          });
+
+}
