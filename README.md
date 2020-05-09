@@ -1,5 +1,5 @@
 # Project Title
-Employee Summary
+Team Profile Generator
 
 ## Table of Contents:
 - [Repository](#Repository)
