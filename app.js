@@ -41,17 +41,21 @@ const getManager = () => {
             {
                 type: "input",
                 message: "What is the manager's name?",
-                name: "managerName"
+                name: "managerName",
+                validate: validateEmptyString
+                
             },
             {
                 type: "input",
                 message: "What is the manager's id?",
-                name: "managerID"
+                name: "managerID",
+                validate: validateEmptyAndNumeric
             },
             {
                 type: "input",
                 message: "What is the manager's email address?",
-                name: "managerEmail"
+                name: "managerEmail",
+                validate: validateEmptyString
             },
             {
                 type: "input",
@@ -98,22 +102,26 @@ const getEngineer = () => {
             {
                 type: "input",
                 message: "What is the engineer's name?",
-                name: "engineerName"
+                name: "engineerName",
+                validate: validateEmptyString
             },
             {
                 type: "input",
                 message: "What is the engineer's id?",
-                name: "engineerID"
+                name: "engineerID",
+                validate: validateEmptyAndNumeric
             },
             {
                 type: "input",
                 message: "What is the engineer's email address?",
-                name: "engineerEmail"
+                name: "engineerEmail",
+                validate: validateEmptyString
             },
             {
                 type: "input",
                 message: "What is the engineer's github id?",
-                name: "engineerGitHubID"
+                name: "engineerGitHubID",
+                validate: validateEmptyString
             }    
         ])
     .then(function(response) {
@@ -130,22 +138,26 @@ const getIntern = () => {
             {
                 type: "input",
                 message: "What is the intern's name?",
-                name: "internName"
+                name: "internName",
+                validate: validateEmptyString
             },
             {
                 type: "input",
                 message: "What is the intern's id?",
-                name: "internID"
+                name: "internID",
+                validate: validateEmptyAndNumeric
             },
             {
                 type: "input",
                 message: "What is the intern's email address?",
-                name: "internEmail"
+                name: "internEmail",
+                validate: validateEmptyString
             },
             {
                 type: "input",
                 message: "What school does the intern attend?",
-                name: "internSchool"
+                name: "internSchool",
+                validate: validateEmptyString
             }    
         ])
     .then(function(response) {
@@ -192,6 +204,28 @@ const buildData = () => {
 
     fsWriteFile(renderedHTML);
 
+}
+
+//validation functions
+const validateEmptyString = (value) => {
+    if (value == '') {
+        return 'Please enter a value';
+    }
+    else {
+        return true;
+    }
+}
+
+const validateEmptyAndNumeric = (value) => {
+    if (value == '') {
+        return 'Please enter a value';
+    }
+    else if (isNaN(value)) {
+        return 'Please enter number'
+    }
+    else {
+        return true;
+    }
 }
 
 getManager();
